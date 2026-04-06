@@ -39,12 +39,12 @@ define('ADMIN_ITEMS_PER_PAGE', 20);
 define('CSRF_TOKEN_NAME', '_csrf_token');
 define('PASSWORD_MIN_LENGTH', 8);
 
-// Contact Information
-define('CONTACT_EMAIL', 'office@vyapariekta.com');
-define('CONTACT_PHONE', '+91 9792043767');
-define('CONTACT_ADDRESS', 'Uttar Pradesh, India');
+// Contact Information (Dummy Data)
+define('CONTACT_EMAIL', 'info@vyaparmandal.com');
+define('CONTACT_PHONE', '+91 98765 43210');
+define('CONTACT_ADDRESS', '123 Business Plaza, Gandhi Nagar, Lucknow, Uttar Pradesh - 226001');
 
-// Social Media Links
+// Social Media Links (Dummy Data)
 define('SOCIAL_FACEBOOK', 'https://facebook.com/vyaparmandal');
 define('SOCIAL_TWITTER', 'https://twitter.com/vyaparmandal');
 define('SOCIAL_INSTAGRAM', 'https://instagram.com/vyaparmandal');

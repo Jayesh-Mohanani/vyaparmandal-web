@@ -183,8 +183,8 @@ post_max_size = 10M
 
 ## 📞 Support
 
-- Email: office@vyapariekta.com
-- Phone: +91 9792043767
+- Email: info@vyaparmandal.com
+- Phone: +91 98765 43210
 
 ## 🙏 Credits
 

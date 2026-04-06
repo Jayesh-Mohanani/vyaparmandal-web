@@ -1,8 +1,10 @@
 # Enable URL Rewriting
 RewriteEngine On
 
-# Set base directory
-RewriteBase /
+# Set base directory (IMPORTANT: Change this based on your folder)
+# Use / for root installation
+# Use /vyaparmandal-web/ for subdirectory installation
+RewriteBase /vyaparmandal-web/
 
 # Redirect to HTTPS (optional - uncomment in production)
 # RewriteCond %{HTTPS} off
