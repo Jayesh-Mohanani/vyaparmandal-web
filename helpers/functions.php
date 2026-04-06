@@ -278,7 +278,7 @@ function slugify($string) {
  * @return string Full asset URL
  */
 function asset($path) {
-    return APP_URL . '/assets/' . ltrim($path, '/');
+    return BASE_URL . '/assets/' . ltrim($path, '/');
 }
 
 /**
@@ -288,7 +288,7 @@ function asset($path) {
  * @return string Full URL
  */
 function url($path = '') {
-    return APP_URL . '/' . ltrim($path, '/');
+    return BASE_URL . '/' . ltrim($path, '/');
 }
 
 /**

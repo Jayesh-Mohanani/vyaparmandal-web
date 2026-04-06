@@ -22,8 +22,8 @@ require_once __DIR__ . '/middleware/admin.php';
    BASE PATH HANDLING
 ================================ */
 
-// Set this if your project is in a subfolder (IMPORTANT)
-$basePath = ''; // e.g. '/my-project' if deployed in subdirectory
+// Get base path from config
+$basePath = BASE_URL; // Set in config/app.php
 
 $request = $_SERVER['REQUEST_URI'];
 $request = parse_url($request, PHP_URL_PATH);

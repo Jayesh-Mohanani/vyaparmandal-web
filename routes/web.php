@@ -67,4 +67,9 @@ return [
         'controller' => 'HomeController@profile',
         'middleware' => 'auth'
     ],
+
+    // Coming Soon page
+    '/coming-soon' => [
+        'view' => 'public/coming-soon'
+    ],
 ];
