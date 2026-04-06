@@ -1,0 +1,38 @@
+# PHP
+*.log
+*.cache
+*.tmp
+
+# Uploads (user-generated content)
+/uploads/*
+!/uploads/.gitkeep
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Composer
+/vendor/
+composer.lock
+
+# Node modules (if using npm for frontend assets)
+node_modules/
+package-lock.json
+
+# System files
+*.swp
+*~
+.*.sw?
+
+# Temporary files
+/temp/
+/tmp/
