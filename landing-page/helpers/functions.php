@@ -24,7 +24,19 @@ function sanitize($data) {
  * @return void
  */
 function redirect($path) {
-    header("Location: " . APP_URL . $path);
+    if (preg_match('#^https?://#i', $path)) {
+        header('Location: ' . $path);
+        exit();
+    }
+
+    $baseUrl = rtrim(BASE_URL, '/');
+    $path = '/' . ltrim($path, '/');
+
+    if ($baseUrl === '') {
+        header('Location: ' . $path);
+    } else {
+        header('Location: ' . $baseUrl . $path);
+    }
     exit();
 }
 
@@ -35,8 +47,32 @@ function redirect($path) {
  */
 function getCurrentPath() {
     $path = $_SERVER['REQUEST_URI'];
-    $path = parse_url($path, PHP_URL_PATH);
-    return rtrim($path, '/');
+    $path = parse_url($path, PHP_URL_PATH) ?: '/';
+
+    $baseUrl = rtrim(BASE_URL, '/');
+    if ($baseUrl !== '' && strpos($path, $baseUrl) === 0) {
+        $path = substr($path, strlen($baseUrl));
+    }
+
+    $path = rtrim($path, '/');
+
+    return $path === '' ? '/' : $path;
+}
+
+/**
+ * Get a safe return path for auth flows.
+ *
+ * @param string $fallback Fallback route when the current page is auth-related
+ * @return string
+ */
+function getReturnToPath($fallback = '/') {
+    $path = getCurrentPath();
+
+    if (in_array($path, ['/login', '/register', '/logout'], true)) {
+        return $fallback;
+    }
+
+    return $path;
 }
 
 /**
@@ -358,6 +394,7 @@ function clearErrors() {
 function requireLogin() {
     if (!isLoggedIn()) {
         setFlash('error', 'Please login to access this page', 'error');
+        $_SESSION['auth_return_to'] = getReturnToPath('/');
         redirect('/login');
     }
 }

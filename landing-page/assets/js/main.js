@@ -4,8 +4,6 @@
  */
 
 (function() {
-    'use strict';
-
     // ====================
     // Smooth Scrolling
     // ====================
@@ -28,16 +26,57 @@
     // ====================
     // Navbar Scroll Effect
     // ====================
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('shadow');
-            } else {
-                navbar.classList.remove('shadow');
-            }
-        });
+    const siteHeader = document.querySelector('.site-header');
+    const navbar = document.querySelector('.site-navbar');
+    const backToTopBtn = document.getElementById('backToTop');
+    const siteFooter = document.querySelector('.site-footer');
+    const heroCarousel = document.getElementById('heroCarousel');
+    const heroCarouselProgress = document.getElementById('heroCarouselProgress');
+
+    const navbarStartY = navbar ? (navbar.getBoundingClientRect().top + window.scrollY) : 0;
+
+    const restartHeroProgress = () => {
+        if (!heroCarouselProgress) {
+            return;
+        }
+
+        heroCarouselProgress.classList.remove('is-animating');
+        void heroCarouselProgress.offsetWidth;
+        heroCarouselProgress.classList.add('is-animating');
+    };
+
+    if (heroCarousel) {
+        restartHeroProgress();
+        heroCarousel.addEventListener('slid.bs.carousel', restartHeroProgress);
     }
+
+    const updateScrollState = () => {
+        const scrolled = window.scrollY > 24;
+
+        if (siteHeader) {
+            siteHeader.classList.toggle('site-header--scrolled', scrolled);
+        }
+
+        if (navbar) {
+            const navbarPinned = window.scrollY >= navbarStartY;
+
+            navbar.classList.toggle('shadow', scrolled);
+            navbar.classList.toggle('site-navbar--fixed', navbarPinned);
+
+            if (siteFooter) {
+                const footerTop = siteFooter.getBoundingClientRect().top;
+                const footerVisible = footerTop <= (window.innerHeight - 40);
+                navbar.classList.toggle('site-navbar--hidden', footerVisible && navbarPinned);
+            }
+        }
+
+        if (backToTopBtn) {
+            backToTopBtn.classList.toggle('is-visible', window.scrollY > 300);
+        }
+    };
+
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
 
     // ====================
     // Form Validation
@@ -247,6 +286,18 @@
             });
         });
     });
+
+    // ====================
+    // Back to Top Button
+    // ====================
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // ====================
     // Console Welcome Message

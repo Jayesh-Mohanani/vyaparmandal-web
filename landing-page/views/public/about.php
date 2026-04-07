@@ -24,9 +24,11 @@
     <div class="container">
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400?text=Vyapar+Mandal"
+                <img src="<?php echo asset('images/testing images/test-image-1.png'); ?>"
                      alt="Vyapar Mandal"
-                     class="img-fluid rounded shadow">
+                     class="img-fluid rounded shadow"
+                     loading="lazy"
+                     decoding="async">
             </div>
             <div class="col-lg-6">
                 <h2 class="section-title">Who We Are</h2>
@@ -57,7 +59,7 @@
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body p-5">
                         <div class="mb-4">
-                            <i class="bi bi-bullseye text-primary" style="font-size: 3rem;"></i>
+                            <i class="bi bi-bullseye text-primary display-icon-lg"></i>
                         </div>
                         <h3 class="mb-3">Our Mission</h3>
                         <p class="text-muted">
@@ -91,7 +93,7 @@
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body p-5">
                         <div class="mb-4">
-                            <i class="bi bi-eye text-warning" style="font-size: 3rem;"></i>
+                            <i class="bi bi-eye text-warning display-icon-lg"></i>
                         </div>
                         <h3 class="mb-3">Our Vision</h3>
                         <p class="text-muted">
@@ -136,7 +138,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
+                        <i class="bi bi-shield-check text-primary display-icon-lg"></i>
                     </div>
                     <h5 class="mb-3">Integrity</h5>
                     <p class="text-muted">
@@ -148,7 +150,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-people text-success" style="font-size: 3rem;"></i>
+                        <i class="bi bi-people text-success display-icon-lg"></i>
                     </div>
                     <h5 class="mb-3">Unity</h5>
                     <p class="text-muted">
@@ -160,7 +162,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-lightbulb text-warning" style="font-size: 3rem;"></i>
+                        <i class="bi bi-lightbulb text-warning display-icon-lg"></i>
                     </div>
                     <h5 class="mb-3">Innovation</h5>
                     <p class="text-muted">
@@ -172,7 +174,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="bi bi-heart text-danger" style="font-size: 3rem;"></i>
+                        <i class="bi bi-heart text-danger display-icon-lg"></i>
                     </div>
                     <h5 class="mb-3">Service</h5>
                     <p class="text-muted">

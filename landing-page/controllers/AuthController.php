@@ -15,6 +15,36 @@ require_once __DIR__ . '/../models/data.php';
 class AuthController {
 
     /**
+     * Resolve a safe route to return to after authentication.
+     */
+    private function getReturnPath($fallback = '/') {
+        $candidates = [
+            $_POST['return_to'] ?? null,
+            $_GET['return_to'] ?? null,
+            $_SESSION['auth_return_to'] ?? null,
+        ];
+
+        foreach ($candidates as $candidate) {
+            $candidate = is_string($candidate) ? trim($candidate) : '';
+            if ($candidate === '') {
+                continue;
+            }
+
+            if ($candidate[0] !== '/' || strpos($candidate, '//') === 0) {
+                continue;
+            }
+
+            if (in_array($candidate, ['/login', '/register', '/logout'], true)) {
+                continue;
+            }
+
+            return $candidate;
+        }
+
+        return $fallback;
+    }
+
+    /**
      * Display login form
      */
     public function showLogin() {
@@ -29,6 +59,7 @@ class AuthController {
         }
 
         $pageTitle = 'Login';
+        $returnTo = $this->getReturnPath('/');
         require_once __DIR__ . '/../views/layouts/header.php';
         require_once __DIR__ . '/../views/auth/login.php';
         require_once __DIR__ . '/../views/layouts/footer.php';
@@ -39,9 +70,11 @@ class AuthController {
      */
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            redirect('/login');
+            redirect('/login?return_to=' . urlencode($this->getReturnPath('/')));
             return;
         }
+
+        $returnToInput = $this->getReturnPath('/');
 
         $errors = [];
 
@@ -61,7 +94,7 @@ class AuthController {
         if (!empty($errors)) {
             setErrors($errors);
             setOldInput(['email' => $email]);
-            redirect('/login');
+            redirect('/login?return_to=' . urlencode($returnToInput));
             return;
         }
 
@@ -71,7 +104,7 @@ class AuthController {
         if (!$user || !password_verify($password, $user['password'])) {
             setErrors(['login' => 'Invalid email or password']);
             setOldInput(['email' => $email]);
-            redirect('/login');
+            redirect('/login?return_to=' . urlencode($returnToInput));
             return;
         }
 
@@ -84,13 +117,16 @@ class AuthController {
         clearErrors();
         clearOldInput();
 
+        $returnTo = $this->getReturnPath($user['role'] === 'admin' ? '/admin/dashboard' : '/profile');
+        unset($_SESSION['auth_return_to']);
+
         // Redirect based on role
         if ($user['role'] === 'admin') {
             setFlash('success', 'Welcome back, ' . $user['name'] . '!', 'success');
-            redirect('/admin/dashboard');
+            redirect($returnTo === '/profile' ? '/admin/dashboard' : $returnTo);
         } else {
             setFlash('success', 'Login successful!', 'success');
-            redirect('/profile');
+            redirect($returnTo);
         }
     }
 
@@ -105,6 +141,7 @@ class AuthController {
         }
 
         $pageTitle = 'Register';
+        $returnTo = $this->getReturnPath('/');
         require_once __DIR__ . '/../views/layouts/header.php';
         require_once __DIR__ . '/../views/auth/register.php';
         require_once __DIR__ . '/../views/layouts/footer.php';
@@ -115,9 +152,11 @@ class AuthController {
      */
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            redirect('/register');
+            redirect('/register?return_to=' . urlencode($this->getReturnPath('/')));
             return;
         }
+
+        $returnToInput = $this->getReturnPath('/');
 
         $errors = [];
 
@@ -163,7 +202,7 @@ class AuthController {
                 'email' => $email,
                 'phone' => $phone
             ]);
-            redirect('/register');
+            redirect('/register?return_to=' . urlencode($returnToInput));
             return;
         }
 
@@ -179,7 +218,9 @@ class AuthController {
         setFlash('success', 'Registration successful! Please login to continue.', 'success');
         clearErrors();
         clearOldInput();
-        redirect('/login');
+        $returnTo = $returnToInput;
+        $_SESSION['auth_return_to'] = $returnTo;
+        redirect('/login?return_to=' . urlencode($returnTo));
     }
 
     /**

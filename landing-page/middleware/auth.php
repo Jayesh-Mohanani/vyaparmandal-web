@@ -17,6 +17,7 @@ if (!defined('APP_NAME')) {
 function checkAuth() {
     if (!isLoggedIn()) {
         setFlash('error', 'Please login to access this page', 'error');
+        $_SESSION['auth_return_to'] = getReturnToPath('/');
         redirect('/login');
         return false;
     }

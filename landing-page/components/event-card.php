@@ -29,9 +29,10 @@ $statusText = ucfirst($event['status']);
     <!-- Event Image -->
     <div class="position-relative overflow-hidden">
         <img src="<?php echo $eventImage; ?>"
-             class="card-img-top"
+               class="card-img-top card-media-fixed"
              alt="<?php echo htmlspecialchars($event['title']); ?>"
-             style="height: 200px; object-fit: cover;">
+               loading="lazy"
+               decoding="async">
 
         <!-- Status Badge -->
         <span class="position-absolute top-0 end-0 m-2 badge <?php echo $statusClass; ?> text-white">
@@ -69,17 +70,3 @@ $statusText = ucfirst($event['status']);
     </div>
 </div>
 
-<style>
-    .hover-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hover-lift:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
-    }
-
-    .transition {
-        transition: all 0.3s ease;
-    }
-</style>

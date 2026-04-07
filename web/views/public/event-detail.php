@@ -10,7 +10,7 @@ $eventImage = !empty($event['image']) ?
 ?>
 
 <!-- Event Header -->
-<section class="py-5 bg-dark text-white" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $eventImage; ?>'); background-size: cover; background-position: center;">
+<section class="py-5 bg-dark text-white page-hero-image page-hero-image--event" style="--hero-image: url('<?php echo $eventImage; ?>');">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 mx-auto">
@@ -121,7 +121,7 @@ $eventImage = !empty($event['image']) ?
 
             <!-- Sidebar -->
             <div class="col-lg-4">
-                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 100px;">
+                <div class="card border-0 shadow-sm mb-4 sticky-top event-sticky-card">
                     <div class="card-body p-4">
                         <h5 class="mb-4">Event Information</h5>
 

@@ -39,7 +39,7 @@
                                 <h3 class="mb-0 fw-bold"><?php echo number_format($stats['total_members']); ?></h3>
                             </div>
                             <div>
-                                <i class="bi bi-people-fill text-success" style="font-size: 3rem; opacity: 0.3;"></i>
+                                <i class="bi bi-people-fill text-success display-icon-lg icon-muted"></i>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 <h3 class="mb-0 fw-bold"><?php echo number_format($stats['total_events']); ?></h3>
                             </div>
                             <div>
-                                <i class="bi bi-calendar-event-fill text-warning" style="font-size: 3rem; opacity: 0.3;"></i>
+                                <i class="bi bi-calendar-event-fill text-warning display-icon-lg icon-muted"></i>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 <h3 class="mb-0 fw-bold"><?php echo number_format($stats['total_awards']); ?></h3>
                             </div>
                             <div>
-                                <i class="bi bi-award-fill text-danger" style="font-size: 3rem; opacity: 0.3;"></i>
+                                <i class="bi bi-award-fill text-danger display-icon-lg icon-muted"></i>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                 <h3 class="mb-0 fw-bold"><?php echo count($recentMessages); ?></h3>
                             </div>
                             <div>
-                                <i class="bi bi-envelope-fill text-primary" style="font-size: 3rem; opacity: 0.3;"></i>
+                                <i class="bi bi-envelope-fill text-primary display-icon-lg icon-muted"></i>
                             </div>
                         </div>
                     </div>

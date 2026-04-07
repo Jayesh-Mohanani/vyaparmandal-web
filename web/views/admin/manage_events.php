@@ -33,12 +33,12 @@
                     <table class="table table-hover mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th style="width: 5%;">ID</th>
-                                <th style="width: 30%;">Event Name</th>
+                                <th class="w-5">ID</th>
+                                <th class="w-30">Event Name</th>
                                 <th>Date</th>
                                 <th>Location</th>
                                 <th>Status</th>
-                                <th style="width: 15%;">Actions</th>
+                                <th class="w-15">Actions</th>
                             </tr>
                         </thead>
                         <tbody>

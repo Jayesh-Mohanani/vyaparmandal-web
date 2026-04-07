@@ -11,9 +11,18 @@ if (!isset($item)) {
     return;
 }
 
+$fallbackImages = [
+    asset('images/testing images/test-image-1.png'),
+    asset('images/testing images/test-image-2.png'),
+    asset('images/testing images/test-image-3.png'),
+    asset('images/testing images/test-logo-image-1.png'),
+];
+
+$fallbackImage = $fallbackImages[((int) ($item['id'] ?? 0)) % count($fallbackImages)];
+
 $itemImage = !empty($item['image']) ?
     asset('images/gallery/' . $item['image']) :
-    'https://via.placeholder.com/400x300?text=Gallery+Image';
+    $fallbackImage;
 ?>
 
 <div class="gallery-item col-lg-4 col-md-6 mb-4">
@@ -22,7 +31,8 @@ $itemImage = !empty($item['image']) ?
             <img src="<?php echo $itemImage; ?>"
                  class="card-img-top gallery-image"
                  alt="<?php echo htmlspecialchars($item['title']); ?>"
-                 style="height: 250px; object-fit: cover; cursor: pointer;"
+                  loading="lazy"
+                  decoding="async"
                  data-bs-toggle="modal"
                  data-bs-target="#galleryModal<?php echo $item['id']; ?>">
 
@@ -63,6 +73,8 @@ $itemImage = !empty($item['image']) ?
             <div class="modal-body p-0">
                 <img src="<?php echo $itemImage; ?>"
                      class="img-fluid w-100"
+                     loading="lazy"
+                     decoding="async"
                      alt="<?php echo htmlspecialchars($item['title']); ?>">
             </div>
             <?php if (!empty($item['description'])): ?>
@@ -74,30 +86,3 @@ $itemImage = !empty($item['image']) ?
     </div>
 </div>
 
-<style>
-    .hover-zoom {
-        transition: transform 0.3s ease;
-    }
-
-    .hover-zoom:hover {
-        transform: scale(1.05);
-    }
-
-    .gallery-overlay {
-        background: rgba(0, 0, 0, 0.6);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-    }
-
-    .gallery-image {
-        transition: transform 0.5s ease;
-    }
-
-    .gallery-item:hover .gallery-image {
-        transform: scale(1.1);
-    }
-</style>

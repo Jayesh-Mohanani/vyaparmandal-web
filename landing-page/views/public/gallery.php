@@ -6,12 +6,12 @@
 ?>
 
 <!-- Page Header -->
-<section class="py-5 bg-gradient-primary text-white">
+<section class="py-5 text-white page-hero-image page-hero-image--gallery">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
+            <div class="col-lg-8 mx-auto text-center py-4">
                 <h1 class="display-4 fw-bold mb-3">Photo Gallery</h1>
-                <p class="lead">
+                <p class="lead mb-0">
                     Glimpses from our events, meetings, and activities
                 </p>
             </div>
@@ -22,6 +22,38 @@
 <!-- Gallery Section -->
 <section class="py-5">
     <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title d-inline-block">Featured Gallery</h2>
+            <p class="section-subtitle">Previewing the local images now used across the website</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-1.png'); ?>" alt="Featured gallery 1" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Featured 1</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-2.png'); ?>" alt="Featured gallery 2" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Featured 2</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-3.png'); ?>" alt="Featured gallery 3" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Featured 3</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-logo-image-1.png'); ?>" alt="Featured gallery logo" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Featured 4</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Category Filter -->
         <div class="mb-5">
             <ul class="nav nav-pills justify-content-center flex-wrap" id="galleryTabs" role="tablist">
@@ -64,7 +96,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-images text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No images available</p>
                         </div>
                     <?php endif; ?>
@@ -82,7 +114,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-images text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No event photos available</p>
                         </div>
                     <?php endif; ?>
@@ -100,7 +132,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-images text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No meeting photos available</p>
                         </div>
                     <?php endif; ?>
@@ -118,7 +150,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-images text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No workshop photos available</p>
                         </div>
                     <?php endif; ?>
@@ -136,7 +168,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-images text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No award photos available</p>
                         </div>
                     <?php endif; ?>

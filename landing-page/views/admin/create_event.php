@@ -114,7 +114,7 @@
 
                                 <!-- Image Preview -->
                                 <div class="col-12">
-                                    <img id="imagePreview" src="#" alt="Preview" class="img-thumbnail" style="display: none; max-width: 300px;">
+                                    <img id="imagePreview" src="#" alt="Preview" class="img-thumbnail image-preview">
                                 </div>
 
                                 <!-- Submit Buttons -->

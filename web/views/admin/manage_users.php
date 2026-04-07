@@ -28,13 +28,13 @@
                     <table class="table table-hover mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th style="width: 5%;">ID</th>
-                                <th style="width: 25%;">Name</th>
+                                <th class="w-5">ID</th>
+                                <th class="w-25">Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Role</th>
                                 <th>Joined</th>
-                                <th style="width: 15%;">Actions</th>
+                                <th class="w-15">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +48,9 @@
                                                      alt="<?php echo htmlspecialchars($user['name']); ?>"
                                                      class="rounded-circle me-2"
                                                      width="40"
-                                                     height="40">
+                                                       height="40"
+                                                       loading="lazy"
+                                                       decoding="async">
                                                 <strong><?php echo htmlspecialchars($user['name']); ?></strong>
                                             </div>
                                         </td>

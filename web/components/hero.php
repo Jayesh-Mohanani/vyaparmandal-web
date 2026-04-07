@@ -1,98 +1,82 @@
-<!-- Hero Section / Banner Slider -->
-<section class="hero-section">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<?php
+$heroSlides = [
+    [
+        'image' => asset('images/testing images/test-image-1.png'),
+        'eyebrow' => 'Community in motion',
+        'title' => 'Empowering traders across Uttar Pradesh',
+        'text' => 'Join hands with ' . APP_NAME . ' to strengthen the voice of traders and build a prosperous business community.',
+        'primary' => ['label' => 'Join Now', 'url' => url('/membership')],
+        'secondary' => ['label' => 'Learn More', 'url' => url('/about')],
+        'accent' => 'from-[#23303b] via-[#1f2937] to-[#111827]'
+    ],
+    [
+        'image' => asset('images/testing images/test-image-2.png'),
+        'eyebrow' => 'Events and outreach',
+        'title' => 'Trade policy advocacy and business support',
+        'text' => 'We fight for fair policies, GST reforms, and better opportunities for traders and small businesses.',
+        'primary' => ['label' => 'View Events', 'url' => url('/events')],
+        'secondary' => ['label' => 'Contact Us', 'url' => url('/contact')],
+        'accent' => 'from-[#1f2937] via-[#0f172a] to-[#111827]'
+    ],
+    [
+        'image' => asset('images/testing images/test-image-3.png'),
+        'eyebrow' => 'Training and growth',
+        'title' => 'Digital training and skill development',
+        'text' => 'Modernize your business with workshops on digital payments, e-commerce, and GST compliance.',
+        'primary' => ['label' => 'View Programs', 'url' => url('/events')],
+        'secondary' => ['label' => 'Gallery', 'url' => url('/gallery')],
+        'accent' => 'from-[#312e81] via-[#1e3a8a] to-[#0f172a]'
+    ],
+];
+?>
+
+<section class="hero-section hero-section--image-carousel">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000" data-bs-pause="false">
+        <div class="hero-carousel-progress" aria-hidden="true">
+            <span id="heroCarouselProgress" class="hero-carousel-progress__bar"></span>
+        </div>
+
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            <?php foreach ($heroSlides as $index => $slide): ?>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>" aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>" aria-label="Slide <?php echo $index + 1; ?>"></button>
+            <?php endforeach; ?>
         </div>
 
         <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <div class="container">
-                        <div class="row align-items-center min-vh-75">
-                            <div class="col-lg-8 text-white">
-                                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInUp">
-                                    Empowering Traders<br>
-                                    Across Uttar Pradesh
-                                </h1>
-                                <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
-                                    Join hands with <?php echo APP_NAME; ?> to strengthen the voice of traders
-                                    and build a prosperous business community.
-                                </p>
-                                <div class="animate__animated animate__fadeInUp animate__delay-2s">
-                                    <a href="<?php echo url('/membership'); ?>" class="btn btn-warning btn-lg me-3 mb-2">
-                                        <i class="bi bi-person-plus-fill me-2"></i>Join Now
-                                    </a>
-                                    <a href="<?php echo url('/about'); ?>" class="btn btn-outline-light btn-lg mb-2">
-                                        <i class="bi bi-info-circle me-2"></i>Learn More
-                                    </a>
+            <?php foreach ($heroSlides as $index => $slide): ?>
+                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                    <div class="hero-slide hero-slide--image bg-gradient-dark">
+                        <div class="container">
+                            <div class="row align-items-center hero-content-row py-5">
+                                <div class="col-lg-6 text-white mb-4 mb-lg-0">
+                                    <span class="hero-eyebrow d-inline-block mb-3"><?php echo $slide['eyebrow']; ?></span>
+                                    <h1 class="display-4 fw-bold mb-4"><?php echo $slide['title']; ?></h1>
+                                    <p class="lead mb-4 hero-copy"><?php echo $slide['text']; ?></p>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <a href="<?php echo $slide['primary']['url']; ?>" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-arrow-right-circle-fill me-2"></i><?php echo $slide['primary']['label']; ?>
+                                        </a>
+                                        <a href="<?php echo $slide['secondary']['url']; ?>" class="btn btn-outline-light btn-lg">
+                                            <?php echo $slide['secondary']['label']; ?>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <div class="container">
-                        <div class="row align-items-center min-vh-75">
-                            <div class="col-lg-8 text-white">
-                                <h1 class="display-3 fw-bold mb-4">
-                                    Trade Policy Advocacy<br>
-                                    & Business Support
-                                </h1>
-                                <p class="lead mb-4">
-                                    We fight for fair policies, GST reforms, and better business opportunities for traders.
-                                </p>
-                                <div>
-                                    <a href="<?php echo url('/events'); ?>" class="btn btn-light btn-lg me-3 mb-2">
-                                        <i class="bi bi-calendar-event me-2"></i>View Events
-                                    </a>
-                                    <a href="<?php echo url('/contact'); ?>" class="btn btn-outline-light btn-lg mb-2">
-                                        <i class="bi bi-envelope me-2"></i>Contact Us
-                                    </a>
+                                <div class="col-lg-6">
+                                    <div class="hero-image-frame">
+                                        <img src="<?php echo $slide['image']; ?>"
+                                             alt="<?php echo htmlspecialchars($slide['title']); ?>"
+                                             class="img-fluid hero-image"
+                                             <?php echo $index === 0 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'; ?>>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                    <div class="container">
-                        <div class="row align-items-center min-vh-75">
-                            <div class="col-lg-8 text-white">
-                                <h1 class="display-3 fw-bold mb-4">
-                                    Digital Training &<br>
-                                    Skill Development
-                                </h1>
-                                <p class="lead mb-4">
-                                    Modernize your business with our comprehensive training programs on digital payments,
-                                    e-commerce, and GST compliance.
-                                </p>
-                                <div>
-                                    <a href="<?php echo url('/events'); ?>" class="btn btn-warning btn-lg me-3 mb-2">
-                                        <i class="bi bi-mortarboard-fill me-2"></i>View Programs
-                                    </a>
-                                    <a href="<?php echo url('/gallery'); ?>" class="btn btn-outline-light btn-lg mb-2">
-                                        <i class="bi bi-images me-2"></i>Gallery
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
 
-        <!-- Carousel Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -103,20 +87,3 @@
         </button>
     </div>
 </section>
-
-<style>
-    .min-vh-75 {
-        min-height: 75vh;
-    }
-
-    .hero-slide {
-        min-height: 75vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    .hero-section .carousel-item {
-        transition: transform 1s ease-in-out;
-    }
-</style>

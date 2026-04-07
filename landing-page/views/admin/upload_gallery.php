@@ -34,7 +34,7 @@
                                 <label for="image" class="form-label">Image <span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required data-preview="imagePreview">
                             </div>
-                            <img id="imagePreview" src="#" alt="Preview" class="img-thumbnail mb-3" style="display: none; max-width: 300px;">
+                            <img id="imagePreview" src="#" alt="Preview" class="img-thumbnail mb-3 image-preview">
                             <hr>
                             <button type="submit" class="btn btn-primary me-2"><i class="bi bi-upload me-2"></i>Upload</button>
                             <a href="<?php echo url('/admin/gallery'); ?>" class="btn btn-secondary">Cancel</a>

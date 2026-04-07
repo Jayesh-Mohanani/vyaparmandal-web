@@ -56,7 +56,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-calendar-x text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No events available</p>
                         </div>
                     <?php endif; ?>
@@ -76,7 +76,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-calendar-x text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No upcoming events at the moment</p>
                         </div>
                     <?php endif; ?>
@@ -96,7 +96,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 text-center py-5">
-                            <i class="bi bi-calendar-check text-muted" style="font-size: 4rem;"></i>
+                            <i class="bi bi-calendar-check text-muted display-icon-xl"></i>
                             <p class="text-muted mt-3">No completed events</p>
                         </div>
                     <?php endif; ?>

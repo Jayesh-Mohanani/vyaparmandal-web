@@ -8,6 +8,46 @@
 <!-- Hero Section -->
 <?php require_once __DIR__ . '/../../components/hero.php'; ?>
 
+<!-- Visual Preview Section -->
+<section class="py-5 site-visual-preview">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title d-inline-block">Visual Preview</h2>
+            <p class="section-subtitle">A quick look at the local images now used across the site</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-logo-image-1.png'); ?>" alt="<?php echo APP_NAME; ?> logo" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Logo</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-1.png'); ?>" alt="Community preview" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Community</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-2.png'); ?>" alt="Event preview" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Events</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="site-visual-card">
+                    <img src="<?php echo asset('images/testing images/test-image-3.png'); ?>" alt="Gallery preview" loading="lazy" decoding="async">
+                    <div class="site-visual-card__label">Gallery</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Quick Access Cards -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -15,7 +55,7 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm text-center h-100 hover-lift">
                     <div class="card-body p-4">
-                        <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
+                        <i class="bi bi-people-fill text-primary display-icon-lg"></i>
                         <h4 class="mt-3 mb-3">Member List</h4>
                         <p class="text-muted">Browse our directory of registered members across Uttar Pradesh</p>
                         <a href="<?php echo url('/membership'); ?>" class="btn btn-outline-primary">View Members</a>
@@ -26,7 +66,7 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm text-center h-100 hover-lift">
                     <div class="card-body p-4">
-                        <i class="bi bi-award-fill text-warning" style="font-size: 3rem;"></i>
+                        <i class="bi bi-award-fill text-warning display-icon-lg"></i>
                         <h4 class="mt-3 mb-3">Officials List</h4>
                         <p class="text-muted">Meet our dedicated team of office bearers and executives</p>
                         <a href="<?php echo url('/about'); ?>" class="btn btn-outline-warning">View Officials</a>
@@ -37,7 +77,7 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm text-center h-100 hover-lift">
                     <div class="card-body p-4">
-                        <i class="bi bi-person-plus-fill text-success" style="font-size: 3rem;"></i>
+                        <i class="bi bi-person-plus-fill text-success display-icon-lg"></i>
                         <h4 class="mt-3 mb-3">Join as Member</h4>
                         <p class="text-muted">Become part of our growing community of traders and businesses</p>
                         <a href="<?php echo url('/membership'); ?>" class="btn btn-outline-success">Join Now</a>
@@ -70,9 +110,11 @@
             </div>
 
             <div class="col-lg-6">
-                <img src="https://via.placeholder.com/600x400?text=About+Vyapar+Mandal"
+                <img src="<?php echo asset('images/testing images/test-image-2.png'); ?>"
                      alt="About Vyapar Mandal"
-                     class="img-fluid rounded shadow">
+                     class="img-fluid rounded shadow"
+                     loading="lazy"
+                     decoding="async">
             </div>
         </div>
     </div>
@@ -156,7 +198,8 @@
                         <img src="<?php echo !empty($news['image']) ? asset('images/news/' . $news['image']) : 'https://via.placeholder.com/400x250?text=' . urlencode($news['title']); ?>"
                              class="card-img-top"
                              alt="<?php echo htmlspecialchars($news['title']); ?>"
-                             style="height: 200px; object-fit: cover;">
+                                loading="lazy"
+                                decoding="async">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2">
                                 <small class="text-muted">
@@ -270,7 +313,10 @@
                                     <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($testimonial['name']); ?>&size=60&background=random"
                                          class="rounded-circle"
                                          alt="<?php echo htmlspecialchars($testimonial['name']); ?>"
-                                         width="60">
+                                         width="60"
+                                         height="60"
+                                         loading="lazy"
+                                         decoding="async">
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="mb-0"><?php echo htmlspecialchars($testimonial['name']); ?></h6>
@@ -295,7 +341,7 @@
         <p class="lead mb-4">
             Become a member today and be part of the strongest trader organization in Uttar Pradesh
         </p>
-        <a href="<?php echo url('/membership'); ?>" class="btn btn-warning btn-lg me-3">
+        <a href="<?php echo url('/membership'); ?>" class="btn btn-primary btn-lg me-3">
             <i class="bi bi-person-plus-fill me-2"></i>Join Now
         </a>
         <a href="<?php echo url('/contact'); ?>" class="btn btn-outline-light btn-lg">

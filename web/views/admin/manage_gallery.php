@@ -33,9 +33,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card border-0 shadow-sm h-100">
                             <img src="https://via.placeholder.com/400x300?text=<?php echo urlencode($item['title']); ?>"
-                                 class="card-img-top"
+                                   class="card-img-top card-media-fixed"
                                  alt="<?php echo htmlspecialchars($item['title']); ?>"
-                                 style="height: 200px; object-fit: cover;">
+                                   loading="lazy"
+                                   decoding="async">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo htmlspecialchars($item['title']); ?></h6>
                                 <p class="card-text small text-muted">
@@ -59,7 +60,7 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-12 text-center py-5">
-                    <i class="bi bi-images text-muted" style="font-size: 4rem;"></i>
+                    <i class="bi bi-images text-muted display-icon-xl"></i>
                     <p class="text-muted mt-3">No images in gallery</p>
                 </div>
             <?php endif; ?>

@@ -6,10 +6,10 @@
 ?>
 
 <!-- Page Header -->
-<section class="py-5 bg-gradient-primary text-white">
+<section class="py-5 text-white page-hero-image page-hero-image--contact">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
+            <div class="col-lg-8 mx-auto text-center py-4">
                 <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
                 <p class="lead">
                     We're here to help. Reach out to us anytime
@@ -138,6 +138,7 @@
                                            class="form-control <?php echo getError('name') ? 'is-invalid' : ''; ?>"
                                            id="name"
                                            name="name"
+                                         autocomplete="name"
                                            value="<?php echo old('name'); ?>"
                                            required>
                                     <?php if ($error = getError('name')): ?>
@@ -152,6 +153,7 @@
                                            class="form-control <?php echo getError('email') ? 'is-invalid' : ''; ?>"
                                            id="email"
                                            name="email"
+                                         autocomplete="email"
                                            value="<?php echo old('email'); ?>"
                                            required>
                                     <?php if ($error = getError('email')): ?>
@@ -166,6 +168,8 @@
                                            class="form-control"
                                            id="phone"
                                            name="phone"
+                                         autocomplete="tel"
+                                         inputmode="tel"
                                            value="<?php echo old('phone'); ?>"
                                            maxlength="10">
                                 </div>
@@ -214,9 +218,9 @@
 <!-- Map Section (Placeholder) -->
 <section class="py-0">
     <div class="container-fluid p-0">
-        <div class="ratio ratio-21x9" style="max-height: 450px;">
+        <div class="ratio ratio-21x9 map-frame-limit">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.8147744242!2d80.77769855!3d26.8467088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                    style="border:0;"
+                class="map-frame"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>

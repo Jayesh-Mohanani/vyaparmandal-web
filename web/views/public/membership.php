@@ -109,6 +109,7 @@
                                            class="form-control <?php echo getError('name') ? 'is-invalid' : ''; ?>"
                                            id="name"
                                            name="name"
+                                         autocomplete="name"
                                            value="<?php echo old('name'); ?>"
                                            required>
                                     <?php if ($error = getError('name')): ?>
@@ -123,6 +124,7 @@
                                            class="form-control <?php echo getError('email') ? 'is-invalid' : ''; ?>"
                                            id="email"
                                            name="email"
+                                         autocomplete="email"
                                            value="<?php echo old('email'); ?>"
                                            required>
                                     <?php if ($error = getError('email')): ?>
@@ -137,6 +139,8 @@
                                            class="form-control <?php echo getError('phone') ? 'is-invalid' : ''; ?>"
                                            id="phone"
                                            name="phone"
+                                         autocomplete="tel"
+                                         inputmode="tel"
                                            value="<?php echo old('phone'); ?>"
                                            maxlength="10"
                                            required>
@@ -152,6 +156,7 @@
                                            class="form-control <?php echo getError('business_name') ? 'is-invalid' : ''; ?>"
                                            id="business_name"
                                            name="business_name"
+                                         autocomplete="organization"
                                            value="<?php echo old('business_name'); ?>"
                                            required>
                                     <?php if ($error = getError('business_name')): ?>
@@ -198,6 +203,7 @@
                                            class="form-control"
                                            id="city"
                                            name="city"
+                                         autocomplete="address-level2"
                                            value="<?php echo old('city'); ?>">
                                 </div>
 
@@ -263,7 +269,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card border-0 shadow-sm h-100 border-primary" style="border-width: 2px !important;">
+                <div class="card border-0 shadow-sm h-100 border-primary featured-plan-card">
                     <div class="card-header bg-primary text-white text-center">
                         <small>MOST POPULAR</small>
                     </div>
