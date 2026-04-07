@@ -1,10 +1,10 @@
 <?php
 $currentPath = getCurrentPath();
-$isAdminDashboard = $currentPath === '/admin' || $currentPath === '/admin/';
+$isAdminRoute = strpos($currentPath, '/admin') === 0;
 ?>
 
-<header class="site-header<?php echo $isAdminDashboard ? ' site-header--admin' : ''; ?>">
-    <?php if (!$isAdminDashboard): ?>
+<header class="site-header<?php echo $isAdminRoute ? ' site-header--admin' : ''; ?>">
+    <?php if (!$isAdminRoute): ?>
     <div class="site-top-strip">
         <div class="container">
             <div class="site-top-strip__inner d-flex align-items-center justify-content-between gap-3">
@@ -25,7 +25,6 @@ $isAdminDashboard = $currentPath === '/admin' || $currentPath === '/admin/';
     </div>
     <?php endif; ?>
 
-    <?php if (!$isAdminDashboard): ?>
     <div class="site-brand-strip">
         <div class="container">
             <div class="site-brand-strip__inner d-flex flex-column flex-xl-row align-items-center justify-content-between gap-3 py-3">
@@ -58,9 +57,8 @@ $isAdminDashboard = $currentPath === '/admin' || $currentPath === '/admin/';
             </div>
         </div>
     </div>
-    <?php endif; ?>
 
-    <nav class="navbar navbar-expand-lg navbar-dark site-navbar<?php echo $isAdminDashboard ? ' site-navbar--standalone' : ''; ?>" aria-label="Primary navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark site-navbar" aria-label="Primary navigation">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

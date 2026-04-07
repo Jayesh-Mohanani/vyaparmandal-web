@@ -1,8 +1,22 @@
 <?php /**Upload Gallery Page*/ ?>
-<section class="py-4 bg-light border-bottom">
+<section class="py-4 bg-light border-bottom admin-page-header">
     <div class="container-fluid">
-        <h2 class="mb-0"><i class="bi bi-upload me-2"></i>Upload to Gallery</h2>
-        <p class="text-muted mb-0">Add new images to the gallery</p>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="mb-0"><i class="bi bi-upload me-2"></i>Upload to Gallery</h2>
+                <p class="text-muted mb-0">Add new images to the gallery</p>
+            </div>
+            <div class="col-md-6">
+                <div class="admin-page-actions">
+                    <a href="<?php echo url('/admin'); ?>" class="admin-back-link">
+                        <i class="bi bi-speedometer2"></i>Dashboard
+                    </a>
+                    <a href="<?php echo url('/admin/gallery'); ?>" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Gallery
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <section class="py-4">

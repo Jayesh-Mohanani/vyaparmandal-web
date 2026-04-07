@@ -1,8 +1,22 @@
 <?php /**Edit User Page*/ ?>
-<section class="py-4 bg-light border-bottom">
+<section class="py-4 bg-light border-bottom admin-page-header">
     <div class="container-fluid">
-        <h2 class="mb-0"><i class="bi bi-person-gear me-2"></i>Edit User</h2>
-        <p class="text-muted mb-0">Modify user information and permissions</p>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="mb-0"><i class="bi bi-person-gear me-2"></i>Edit User</h2>
+                <p class="text-muted mb-0">Modify user information and permissions</p>
+            </div>
+            <div class="col-md-6">
+                <div class="admin-page-actions">
+                    <a href="<?php echo url('/admin'); ?>" class="admin-back-link">
+                        <i class="bi bi-speedometer2"></i>Dashboard
+                    </a>
+                    <a href="<?php echo url('/admin/users'); ?>" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Users
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <section class="py-4">

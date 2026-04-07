@@ -6,7 +6,7 @@
 ?>
 
 <!-- Dashboard Header -->
-<section class="py-4 bg-light border-bottom">
+<section class="py-4 bg-light border-bottom admin-page-header">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -26,7 +26,7 @@
 </section>
 
 <!-- Dashboard Content -->
-<section class="py-4">
+<section class="py-4 admin-dashboard-section">
     <div class="container-fluid">
         <!-- Statistics Cards -->
         <div class="row g-4 mb-4">
@@ -98,19 +98,19 @@
         <div class="row g-4">
             <!-- Recent Events -->
             <div class="col-lg-8">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                <div class="card border-0 shadow-sm h-100 dashboard-panel dashboard-events-panel">
+                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center dashboard-panel__header">
                         <h5 class="mb-0">
                             <i class="bi bi-calendar-event me-2"></i>Recent Events
                         </h5>
-                        <a href="<?php echo url('/admin/events'); ?>" class="btn btn-sm btn-outline-primary">
+                        <a href="<?php echo url('/admin/events'); ?>" class="btn btn-sm btn-outline-primary dashboard-link-btn">
                             View All
                         </a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead class="table-light">
+                            <table class="table table-hover mb-0 dashboard-table">
+                                <thead class="table-light dashboard-table-head">
                                     <tr>
                                         <th>Event Name</th>
                                         <th>Date</th>
@@ -159,24 +159,24 @@
             <!-- Quick Actions & Recent Messages -->
             <div class="col-lg-4">
                 <!-- Quick Actions -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-white border-0">
+                <div class="card border-0 shadow-sm mb-4 dashboard-panel dashboard-quick-panel">
+                    <div class="card-header bg-white border-0 dashboard-panel__header">
                         <h5 class="mb-0">
                             <i class="bi bi-lightning-fill me-2"></i>Quick Actions
                         </h5>
                     </div>
                     <div class="card-body">
-                        <div class="d-grid gap-2">
-                            <a href="<?php echo url('/admin/events/create'); ?>" class="btn btn-primary">
+                        <div class="d-grid gap-2 dashboard-quick-actions">
+                            <a href="<?php echo url('/admin/events/create'); ?>" class="btn btn-primary dashboard-action-btn dashboard-action-btn--indigo">
                                 <i class="bi bi-plus-circle me-2"></i>Add New Event
                             </a>
-                            <a href="<?php echo url('/admin/gallery/upload'); ?>" class="btn btn-success">
+                            <a href="<?php echo url('/admin/gallery/upload'); ?>" class="btn btn-success dashboard-action-btn dashboard-action-btn--green">
                                 <i class="bi bi-image me-2"></i>Upload to Gallery
                             </a>
-                            <a href="<?php echo url('/admin/users'); ?>" class="btn btn-info text-white">
+                            <a href="<?php echo url('/admin/users'); ?>" class="btn btn-info text-white dashboard-action-btn dashboard-action-btn--cyan">
                                 <i class="bi bi-people me-2"></i>Manage Users
                             </a>
-                            <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-warning">
+                            <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-warning dashboard-action-btn dashboard-action-btn--gold">
                                 <i class="bi bi-envelope me-2"></i>View Messages
                             </a>
                         </div>
@@ -184,12 +184,12 @@
                 </div>
 
                 <!-- Recent Messages -->
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                <div class="card border-0 shadow-sm dashboard-panel dashboard-messages-panel">
+                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center dashboard-panel__header">
                         <h5 class="mb-0">
                             <i class="bi bi-envelope me-2"></i>Recent Messages
                         </h5>
-                        <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-sm btn-outline-primary">
+                        <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-sm btn-outline-primary dashboard-link-btn">
                             View All
                         </a>
                     </div>
@@ -197,7 +197,7 @@
                         <?php if (!empty($recentMessages)): ?>
                             <div class="list-group list-group-flush">
                                 <?php foreach (array_slice($recentMessages, 0, 5) as $message): ?>
-                                    <a href="<?php echo url('/admin/messages/' . $message['id']); ?>" class="list-group-item list-group-item-action">
+                                    <a href="<?php echo url('/admin/messages/' . $message['id']); ?>" class="list-group-item list-group-item-action dashboard-message-item">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h6 class="mb-1"><?php echo htmlspecialchars($message['name']); ?></h6>
                                             <small class="text-muted"><?php echo formatDate($message['created_at'], 'd M'); ?></small>

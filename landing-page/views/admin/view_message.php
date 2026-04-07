@@ -1,15 +1,20 @@
 <?php /**View Message Page*/ ?>
-<section class="py-4 bg-light border-bottom">
+<section class="py-4 bg-light border-bottom admin-page-header">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-6">
                 <h2 class="mb-0"><i class="bi bi-envelope-open me-2"></i>Message Details</h2>
                 <p class="text-muted mb-0">Contact form submission</p>
             </div>
-            <div class="col-md-6 text-md-end">
-                <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left me-2"></i>Back to Messages
-                </a>
+            <div class="col-md-6">
+                <div class="admin-page-actions">
+                    <a href="<?php echo url('/admin'); ?>" class="admin-back-link">
+                        <i class="bi bi-speedometer2"></i>Dashboard
+                    </a>
+                    <a href="<?php echo url('/admin/messages'); ?>" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Messages
+                    </a>
+                </div>
             </div>
         </div>
     </div>

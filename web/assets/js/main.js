@@ -197,16 +197,116 @@
     });
 
     // ====================
-    // Confirm Delete Actions
+    // Destructive Actions + Confirm Modal
     // ====================
-    const deleteButtons = document.querySelectorAll('[data-confirm-delete]');
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
-                e.preventDefault();
-            }
-        });
+    const destructivePattern = /delete|remove|cancel/i;
+    const interactiveButtons = document.querySelectorAll('a.btn, button.btn, input.btn');
+
+    interactiveButtons.forEach(button => {
+        const label = ((button.textContent || button.value || '') + '').trim();
+        if (destructivePattern.test(label)) {
+            button.classList.add('operation-danger');
+        }
     });
+
+    const ensureConfirmModal = () => {
+        const existing = document.getElementById('actionConfirmModal');
+        if (existing) {
+            return existing;
+        }
+
+        const modalMarkup = document.createElement('div');
+        modalMarkup.innerHTML = `
+            <div class="modal fade action-confirm-modal" id="actionConfirmModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 pb-0">
+                            <h5 class="modal-title d-flex align-items-center gap-2">
+                                <span class="action-confirm-modal__icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+                                Confirm Action
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pt-2">
+                            <p id="actionConfirmMessage" class="mb-0 text-muted"></p>
+                        </div>
+                        <div class="modal-footer border-0 pt-0">
+                            <button type="button" class="btn action-cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn action-confirm-btn" id="actionConfirmProceed">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modalMarkup.firstElementChild);
+        return document.getElementById('actionConfirmModal');
+    };
+
+    const resolveActionWord = (button) => {
+        const explicit = (button.getAttribute('data-confirm-action') || '').trim();
+        if (explicit) {
+            return explicit;
+        }
+
+        const label = ((button.textContent || button.value || '') + '').trim().toLowerCase();
+        if (label.includes('remove')) {
+            return 'Remove';
+        }
+
+        if (label.includes('cancel')) {
+            return 'Cancel';
+        }
+
+        return 'Delete';
+    };
+
+    const bindDeleteConfirmation = () => {
+        const deleteButtons = document.querySelectorAll('[data-confirm-delete]');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const actionWord = resolveActionWord(button);
+                const modalEl = ensureConfirmModal();
+                const messageEl = document.getElementById('actionConfirmMessage');
+                const confirmEl = document.getElementById('actionConfirmProceed');
+
+                if (!messageEl || !confirmEl || !modalEl) {
+                    return;
+                }
+
+                messageEl.textContent = `You are about to ${actionWord.toLowerCase()} this item. This action cannot be undone.`;
+                confirmEl.textContent = actionWord;
+
+                const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+                const onConfirm = () => {
+                    confirmEl.removeEventListener('click', onConfirm);
+                    modal.hide();
+
+                    if (button.tagName === 'A') {
+                        const href = button.getAttribute('href');
+                        if (href) {
+                            window.location.href = href;
+                        }
+                        return;
+                    }
+
+                    const parentForm = button.closest('form');
+                    if (parentForm) {
+                        parentForm.submit();
+                    }
+                };
+
+                confirmEl.addEventListener('click', onConfirm, { once: true });
+                modal.show();
+            });
+        });
+    };
+
+    bindDeleteConfirmation();
 
     // ====================
     // File Upload Preview

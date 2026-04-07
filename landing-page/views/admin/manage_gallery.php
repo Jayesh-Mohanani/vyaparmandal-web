@@ -6,7 +6,7 @@
 ?>
 
 <!-- Page Header -->
-<section class="py-4 bg-light border-bottom">
+<section class="py-4 bg-light border-bottom admin-page-header">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -15,10 +15,15 @@
                 </h2>
                 <p class="text-muted mb-0">Upload and manage gallery images</p>
             </div>
-            <div class="col-md-6 text-md-end">
-                <a href="<?php echo url('/admin/gallery/upload'); ?>" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-2"></i>Upload New Image
-                </a>
+            <div class="col-md-6">
+                <div class="admin-page-actions">
+                    <a href="<?php echo url('/admin'); ?>" class="admin-back-link">
+                        <i class="bi bi-speedometer2"></i>Dashboard
+                    </a>
+                    <a href="<?php echo url('/admin/gallery/upload'); ?>" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-2"></i>Upload New Image
+                    </a>
+                </div>
             </div>
         </div>
     </div>
