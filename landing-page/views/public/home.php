@@ -153,7 +153,7 @@
             <?php foreach ($latestNews as $news): ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
-                        <img src="https://via.placeholder.com/400x250?text=<?php echo urlencode($news['title']); ?>"
+                        <img src="<?php echo !empty($news['image']) ? asset('images/news/' . $news['image']) : 'https://via.placeholder.com/400x250?text=' . urlencode($news['title']); ?>"
                              class="card-img-top"
                              alt="<?php echo htmlspecialchars($news['title']); ?>"
                              style="height: 200px; object-fit: cover;">

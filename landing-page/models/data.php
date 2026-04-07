@@ -81,7 +81,7 @@ function getAllEvents() {
             'description' => 'A grand gathering of traders and business owners from across Uttar Pradesh to discuss trade policies, GST reforms, and business opportunities.',
             'event_date' => '2026-05-15',
             'location' => 'Lucknow, Uttar Pradesh',
-            'image' => 'event1.jpg',
+            'image' => 'event-image-1.jpg',
             'status' => 'upcoming',
             'created_at' => '2024-03-01 10:00:00'
         ],
@@ -91,7 +91,7 @@ function getAllEvents() {
             'description' => 'Interactive workshop on GST compliance, filing returns, and understanding recent policy changes affecting small businesses.',
             'event_date' => '2026-04-20',
             'location' => 'Kanpur, Uttar Pradesh',
-            'image' => 'event2.jpg',
+            'image' => 'event-image-2.jpg',
             'status' => 'upcoming',
             'created_at' => '2024-03-10 11:30:00'
         ],
@@ -101,7 +101,7 @@ function getAllEvents() {
             'description' => 'Learn about digital transformation, e-commerce strategies, and online marketing for traditional businesses.',
             'event_date' => '2026-06-10',
             'location' => 'Varanasi, Uttar Pradesh',
-            'image' => 'event3.jpg',
+            'image' => 'event-image-3.jpg',
             'status' => 'upcoming',
             'created_at' => '2024-03-15 14:00:00'
         ],
@@ -111,7 +111,7 @@ function getAllEvents() {
             'description' => 'Annual conference featuring industry leaders, policy makers, and successful entrepreneurs sharing insights and experiences.',
             'event_date' => '2024-12-20',
             'location' => 'Agra, Uttar Pradesh',
-            'image' => 'event4.jpg',
+            'image' => 'event-image-4.jpg',
             'status' => 'completed',
             'created_at' => '2024-01-05 09:00:00'
         ]
@@ -157,7 +157,7 @@ function getAllGallery() {
             'id' => 1,
             'title' => 'व्यापारी सम्मेलन 2024',
             'description' => 'Annual trader conference with over 500 participants',
-            'image' => 'gallery1.jpg',
+            'image' => 'gallery-image-1.jpg',
             'category' => 'events',
             'created_at' => '2024-01-20 10:00:00'
         ],
@@ -165,7 +165,7 @@ function getAllGallery() {
             'id' => 2,
             'title' => 'Meeting with State Officials',
             'description' => 'Delegation meeting with state government officials',
-            'image' => 'gallery2.jpg',
+            'image' => 'gallery-image-2.jpg',
             'category' => 'meetings',
             'created_at' => '2024-02-15 11:30:00'
         ],
@@ -173,7 +173,7 @@ function getAllGallery() {
             'id' => 3,
             'title' => 'GST Workshop Session',
             'description' => 'Interactive GST training workshop',
-            'image' => 'gallery3.jpg',
+            'image' => 'gallery-image-3.jpg',
             'category' => 'workshops',
             'created_at' => '2024-03-05 09:00:00'
         ],
@@ -181,7 +181,7 @@ function getAllGallery() {
             'id' => 4,
             'title' => 'Award Ceremony',
             'description' => 'Recognition ceremony for outstanding traders',
-            'image' => 'gallery4.jpg',
+            'image' => 'gallery-image-4.jpg',
             'category' => 'awards',
             'created_at' => '2024-03-20 16:00:00'
         ],
@@ -189,7 +189,7 @@ function getAllGallery() {
             'id' => 5,
             'title' => 'Business Networking Event',
             'description' => 'Networking session with local business owners',
-            'image' => 'gallery5.jpg',
+            'image' => 'gallery-image-5.jpg',
             'category' => 'events',
             'created_at' => '2024-03-25 14:30:00'
         ],
@@ -197,7 +197,7 @@ function getAllGallery() {
             'id' => 6,
             'title' => 'Press Conference',
             'description' => 'Media briefing on trade policy reforms',
-            'image' => 'gallery6.jpg',
+            'image' => 'gallery-image-6.jpg',
             'category' => 'press',
             'created_at' => '2024-03-28 12:00:00'
         ]
@@ -225,7 +225,7 @@ function getLatestNews($limit = null) {
             'id' => 1,
             'title' => 'व्यापारी कल्याण बोर्ड का गठन',
             'content' => 'Uttar Pradesh government announces formation of Trader Welfare Board to address concerns of small and medium businesses.',
-            'image' => 'news1.jpg',
+            'image' => 'news-image-1.jpg',
             'published_date' => '2026-04-01',
             'created_at' => '2026-04-01 10:00:00'
         ],
@@ -233,7 +233,7 @@ function getLatestNews($limit = null) {
             'id' => 2,
             'title' => 'GST Exemption Limit Raised',
             'content' => 'Government increases GST exemption limit to Rs 40 lakhs, benefiting thousands of small traders across the state.',
-            'image' => 'news2.jpg',
+            'image' => 'news-image-2.jpg',
             'published_date' => '2026-03-28',
             'created_at' => '2026-03-28 09:30:00'
         ],
@@ -241,7 +241,7 @@ function getLatestNews($limit = null) {
             'id' => 3,
             'title' => 'Digital Payment Incentives Announced',
             'content' => 'New incentive scheme for businesses adopting digital payment systems, promoting cashless economy.',
-            'image' => 'news3.jpg',
+            'image' => 'news-image-3.jpg',
             'published_date' => '2026-03-25',
             'created_at' => '2026-03-25 11:00:00'
         ]
@@ -280,7 +280,7 @@ function getTestimonials($limit = null) {
             'location' => 'Kanpur',
             'message' => 'व्यापार मंडल ने हमारी समस्याओं को सरकार तक पहुंचाने में महत्वपूर्ण भूमिका निभाई है। GST में छूट मिलने से हमारे व्यापार को बहुत फायदा हुआ है।',
             'rating' => 5,
-            'image' => 'testimonial1.jpg'
+            'image' => 'testimonial-image-1.jpg'
         ],
         [
             'id' => 2,
@@ -289,7 +289,7 @@ function getTestimonials($limit = null) {
             'location' => 'Lucknow',
             'message' => 'The workshops and training programs have helped me modernize my business. I am now accepting digital payments and have seen a 40% increase in sales.',
             'rating' => 5,
-            'image' => 'testimonial2.jpg'
+            'image' => 'testimonial-image-2.jpg'
         ],
         [
             'id' => 3,
@@ -298,7 +298,7 @@ function getTestimonials($limit = null) {
             'location' => 'Varanasi',
             'message' => 'Being part of this mandal has given me access to networking opportunities and valuable business insights. Highly recommended for all traders.',
             'rating' => 5,
-            'image' => 'testimonial3.jpg'
+            'image' => 'testimonial-image-3.jpg'
         ]
     ];
 

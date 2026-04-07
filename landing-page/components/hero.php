@@ -10,7 +10,7 @@
         <div class="carousel-inner">
             <!-- Slide 1 -->
             <div class="carousel-item active">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="hero-slide" style="background-image: url('<?php echo asset('images/carousel/carousel-image-1.jpg'); ?>'); background-color: #667eea;">
                     <div class="container">
                         <div class="row align-items-center min-vh-75">
                             <div class="col-lg-8 text-white">
@@ -38,7 +38,7 @@
 
             <!-- Slide 2 -->
             <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="hero-slide" style="background-image: url('<?php echo asset('images/carousel/carousel-image-2.jpg'); ?>'); background-color: #f093fb;">
                     <div class="container">
                         <div class="row align-items-center min-vh-75">
                             <div class="col-lg-8 text-white">
@@ -65,7 +65,7 @@
 
             <!-- Slide 3 -->
             <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="hero-slide" style="background-image: url('<?php echo asset('images/carousel/carousel-image-3.jpg'); ?>'); background-color: #4facfe;">
                     <div class="container">
                         <div class="row align-items-center min-vh-75">
                             <div class="col-lg-8 text-white">
