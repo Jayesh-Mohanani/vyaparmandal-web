@@ -91,6 +91,12 @@ $isAdminRoute = strpos($currentPath, '/admin') === 0;
                     <li class="nav-item">
                         <a class="nav-link <?php echo isActive('/contact'); ?>" href="<?php echo url('/contact'); ?>" <?php echo isActive('/contact') ? 'aria-current="page"' : ''; ?>>Contact Us</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo isActive('/terms'); ?>" href="<?php echo url('/terms'); ?>" <?php echo isActive('/terms') ? 'aria-current="page"' : ''; ?>>Terms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo isActive('/privacy-policy'); ?>" href="<?php echo url('/privacy-policy'); ?>" <?php echo isActive('/privacy-policy') ? 'aria-current="page"' : ''; ?>>Privacy</a>
+                    </li>
                 </ul>
 
                 <div class="site-nav-actions d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 ms-lg-3">

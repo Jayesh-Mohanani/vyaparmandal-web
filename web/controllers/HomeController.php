@@ -166,6 +166,28 @@ class HomeController {
     }
 
     /**
+     * Display terms and conditions page
+     */
+    public function terms() {
+        $pageTitle = 'Terms & Conditions';
+
+        require_once __DIR__ . '/../views/layouts/header.php';
+        require_once __DIR__ . '/../views/public/terms.php';
+        require_once __DIR__ . '/../views/layouts/footer.php';
+    }
+
+    /**
+     * Display privacy policy page
+     */
+    public function privacyPolicy() {
+        $pageTitle = 'Privacy Policy';
+
+        require_once __DIR__ . '/../views/layouts/header.php';
+        require_once __DIR__ . '/../views/public/privacy-policy.php';
+        require_once __DIR__ . '/../views/layouts/footer.php';
+    }
+
+    /**
      * Process contact form submission
      */
     public function contactSubmit() {

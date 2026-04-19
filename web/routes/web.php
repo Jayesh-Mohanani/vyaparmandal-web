@@ -44,6 +44,14 @@ return [
         'controller' => 'HomeController@contactSubmit'
     ],
 
+    // Legal pages
+    '/terms' => [
+        'controller' => 'HomeController@terms'
+    ],
+    '/privacy-policy' => [
+        'controller' => 'HomeController@privacyPolicy'
+    ],
+
     // Authentication routes
     '/login' => [
         'controller' => 'AuthController@showLogin'

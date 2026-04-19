@@ -58,8 +58,8 @@
                         <li><a href="<?php echo url('/'); ?>">Legal</a></li>
                         <li><a href="<?php echo url('/about'); ?>">Disclaimer</a></li>
                         <li><a href="<?php echo url('/membership'); ?>">President Message</a></li>
-                        <li><a href="<?php echo url('/events'); ?>">Terms & Conditions</a></li>
-                        <li><a href="<?php echo url('/contact'); ?>">Privacy Policy</a></li>
+                        <li><a href="<?php echo url('/terms'); ?>">Terms & Conditions</a></li>
+                        <li><a href="<?php echo url('/privacy-policy'); ?>">Privacy Policy</a></li>
                         <li><a href="<?php echo url('/login'); ?>">Admin Login</a></li>
                     </ul>
                 </div>
