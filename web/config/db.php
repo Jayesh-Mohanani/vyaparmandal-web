@@ -5,12 +5,13 @@
  */
 
 // Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'vyaparmandal_db');
+define('DB_HOST', '10.0.0.2');
+define('DB_NAME', 'dev_vyparmandal');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', ':db@dc#2001');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATION', 'utf8mb4_unicode_ci');
+define('DB_PORT', 30306);
 
 /**
  * Get Database Connection (prepared for future use)
@@ -22,7 +23,7 @@ function getDBConnection() {
 
     if ($pdo === null) {
         try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+            $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
 
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
