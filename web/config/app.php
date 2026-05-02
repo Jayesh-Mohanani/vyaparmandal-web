@@ -11,7 +11,7 @@ define('APP_DEBUG', true); // Set to false in production
 // Application Details
 define('APP_NAME', 'Pratinidhi Udyog Vyapar Mandal');
 define('APP_URL', 'http://localhost');
-define('BASE_URL', ''); // Set to '' when app is served at site root
+define('BASE_URL', '/vyaparmandal-web/web'); // Use project subfolder when serving at /vyaparmandal-web/web/
 define('APP_VERSION', '1.0.0');
 
 // Paths
