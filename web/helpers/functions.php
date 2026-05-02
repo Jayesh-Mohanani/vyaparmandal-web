@@ -278,7 +278,14 @@ function slugify($string) {
  * @return string Full asset URL
  */
 function asset($path) {
-    return BASE_URL . '/assets/' . ltrim($path, '/');
+    // Prefer assets under the `web` directory when the project root includes `web`.
+    // This keeps URLs correct when the front controller at project root includes `web/index.php`.
+    $projectWebAssets = BASE_PATH . '/web/assets/' . ltrim($path, '/');
+    if (file_exists($projectWebAssets)) {
+        return rtrim(BASE_URL, '/') . '/web/assets/' . ltrim($path, '/');
+    }
+
+    return rtrim(BASE_URL, '/') . '/assets/' . ltrim($path, '/');
 }
 
 /**
