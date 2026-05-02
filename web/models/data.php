@@ -375,13 +375,59 @@ function getLatestNews($limit = null) {
  * Get statistics (simulated)
  */
 function getStatistics() {
-    return [
-        'total_members' => 15240,
-        'total_awards' => 47,
-        'total_events' => 156,
-        'active_officials' => 32,
+    $stats = [
+        'total_members' => 0,
+        'total_awards' => 0,
+        'total_events' => 0,
+        'active_officials' => 0,
         'years_active' => 15
     ];
+
+    try {
+        $pdo = getDBConnection();
+    } catch (PDOException $e) {
+        error_log('getStatistics connection error: ' . $e->getMessage());
+        return $stats;
+    }
+
+    $getCount = function($sql, $params = []) use ($pdo) {
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($params);
+            $row = $stmt->fetch();
+            return isset($row['total']) ? (int)$row['total'] : 0;
+        } catch (PDOException $e) {
+            error_log('getStatistics query error: ' . $e->getMessage());
+            return 0;
+        }
+    };
+
+    $stats['total_members'] = $getCount(
+        "SELECT COUNT(*) AS total FROM users WHERE status = :status",
+        [
+            'status' => 0
+        ]
+    );
+
+    $stats['total_events'] = $getCount(
+        "SELECT COUNT(*) AS total FROM events"
+    );
+
+    $stats['total_awards'] = $getCount(
+        "SELECT COUNT(*) AS total FROM gallery WHERE category = :category",
+        [
+            'category' => 'awards'
+        ]
+    );
+
+    $stats['active_officials'] = $getCount(
+        "SELECT COUNT(*) AS total FROM users WHERE status = :status",
+        [
+            'status' => 0
+        ]
+    );
+
+    return $stats;
 }
 
 /**
