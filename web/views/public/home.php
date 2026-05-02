@@ -289,51 +289,6 @@
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title d-inline-block">What Our Members Say</h2>
-            <p class="section-subtitle">Hear from traders who have benefited from our services</p>
-        </div>
-
-        <div class="row g-4">
-            <?php foreach ($testimonials as $testimonial): ?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="mb-3">
-                                <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                <?php endfor; ?>
-                            </div>
-                            <p class="mb-4">"<?php echo htmlspecialchars($testimonial['message']); ?>"</p>
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($testimonial['name']); ?>&size=60&background=random"
-                                         class="rounded-circle"
-                                         alt="<?php echo htmlspecialchars($testimonial['name']); ?>"
-                                         width="60"
-                                         height="60"
-                                         loading="lazy"
-                                         decoding="async">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="mb-0"><?php echo htmlspecialchars($testimonial['name']); ?></h6>
-                                    <small class="text-muted">
-                                        <?php echo htmlspecialchars($testimonial['business']); ?>,
-                                        <?php echo htmlspecialchars($testimonial['location']); ?>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
 <!-- Call to Action Section -->
 <section class="py-5 bg-gradient-primary text-white">
     <div class="container text-center">

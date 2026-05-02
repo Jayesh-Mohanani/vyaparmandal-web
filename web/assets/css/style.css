@@ -668,17 +668,15 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, 0.82);
 }
 
-.site-footer__intro {
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 0.15rem;
-}
-
 .site-footer__brand {
     display: flex;
     align-items: center;
     gap: 0.7rem;
     min-width: 18rem;
+}
+
+.site-footer__brand-wrap {
+    max-width: 31rem;
 }
 
 .site-footer__logo {
@@ -707,7 +705,11 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer__text {
     color: rgba(255, 255, 255, 0.72);
     font-size: 0.92rem;
-    line-height: 1.65;
+    line-height: 1.55;
+}
+
+.site-footer__links-wrap {
+    max-width: 34rem;
 }
 
 .site-footer__contact li,
@@ -717,7 +719,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-footer__links a {
     display: inline-flex;
-    padding: 0.18rem 0;
+    padding: 0.14rem 0;
     text-decoration: none;
     transition: color 0.2s ease, padding-left 0.2s ease;
 }
@@ -737,6 +739,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767.98px) {
+    .site-footer__brand-wrap,
+    .site-footer__links-wrap {
+        max-width: none;
+    }
+
     .site-footer__brand {
         align-items: flex-start;
     }
@@ -751,12 +758,6 @@ h1, h2, h3, h4, h5, h6 {
 
     .site-footer__brand {
         min-width: auto;
-    }
-
-    .site-footer__intro {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
     }
 
     .site-back-to-top {
