@@ -1,27 +1,17 @@
 # Pratinidhi Udyog Vyapar Mandal - PHP Web Application
 
-A complete, scalable, production-ready PHP web application built with **Core PHP**, **Bootstrap 5**, and **Tailwind CSS**. This is a CMS-ready platform for trader organizations with full authentication, admin panel, and content management capabilities.
+A complete, production-ready PHP web application for trader organizations built with **Core PHP**, **Bootstrap 5**, and modern web standards. Showcases events, gallery, membership opportunities, and organizational information.
 
 ## ✨ Features
 
-### Public Features
-- Responsive Homepage with hero slider, statistics, and CTAs
-- About Page with mission, vision, and organizational info
-- Events System with upcoming/completed events
-- Photo Gallery with category filtering
-- Membership Registration with validation
-- Contact Form with validation
-- User Authentication (Login/Register)
-- User Profiles
-
-### Admin Features
-- Admin Dashboard with statistics
-- Event Management (CRUD)
-- Gallery Management
-- User Management
-- Contact Messages management
-- Role-based Access Control
-- Secure File Upload System
+- Responsive Homepage with hero section and statistics
+- About Page with mission, vision, and organizational information
+- Events System with upcoming events and details
+- Photo Gallery with event and organizational images
+- Membership Application Form
+- Contact Page with inquiry form
+- Terms & Conditions and Privacy Policy pages
+- Responsive Navigation and Footer
 
 ## 🛠 Tech Stack
 
@@ -33,18 +23,7 @@ A complete, scalable, production-ready PHP web application built with **Core PHP
 
 1. Place project in web server directory (e.g., `/htdocs/vyaparmandal-web/`)
 2. Ensure Apache mod_rewrite is enabled
-3. Set upload folder permissions: `chmod -R 755 web/uploads/`
-4. Access website (root): `http://localhost/vyaparmandal-web/`
-
-## 🔐 Demo Credentials
-
-**Admin:**
-- Email: admin@vyaparmandal.com
-- Password: admin123
-
-**User:**
-- Email: rajesh@example.com
-- Password: password123
+3. Access website at: `http://localhost/vyaparmandal-web/web/`
 
 ## 📁 Project Structure
 
@@ -116,22 +95,14 @@ define('CONTACT_EMAIL', 'your@email.com');
 
 ## 📖 Key Routes
 
-**Public:**
 - `/` - Homepage
 - `/about` - About page
 - `/events` - Events listing
 - `/gallery` - Photo gallery
-- `/membership` - Join form
-- `/contact` - Contact form
-- `/login` - User login
-- `/register` - Registration
-
-**Admin:**
-- `/admin/dashboard` - Dashboard
-- `/admin/events` - Manage events
-- `/admin/gallery` - Manage gallery
-- `/admin/users` - Manage users
-- `/admin/messages` - View messages
+- `/membership` - Membership application
+- `/contact` - Contact page
+- `/terms` - Terms & Conditions
+- `/privacy-policy` - Privacy Policy
 
 ## 🎨 Customization
 
