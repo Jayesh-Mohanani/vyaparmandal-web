@@ -171,29 +171,6 @@ $eventImage = !empty($event['image']) ?
                     </div>
                 </div>
 
-                <!-- Share Section -->
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <h6 class="mb-3">Share This Event</h6>
-                        <div class="d-flex gap-2">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(url('/events/' . $event['id'])); ?>"
-                               class="btn btn-outline-primary flex-fill"
-                               target="_blank">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode(url('/events/' . $event['id'])); ?>&text=<?php echo urlencode($event['title']); ?>"
-                               class="btn btn-outline-info flex-fill"
-                               target="_blank">
-                                <i class="bi bi-twitter-x"></i>
-                            </a>
-                            <a href="https://wa.me/?text=<?php echo urlencode($event['title'] . ' - ' . url('/events/' . $event['id'])); ?>"
-                               class="btn btn-outline-success flex-fill"
-                               target="_blank">
-                                <i class="bi bi-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

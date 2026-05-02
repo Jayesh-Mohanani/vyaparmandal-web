@@ -11,7 +11,7 @@ define('APP_DEBUG', true); // Set to false in production
 // Application Details
 define('APP_NAME', 'Pratinidhi Udyog Vyapar Mandal');
 define('APP_URL', 'http://localhost');
-define('BASE_URL', '/vyaparmandal-web/web'); // Change this to '' if at root, or '/folder-name' if in subdirectory
+define('BASE_URL', ''); // Set to '' when app is served at site root
 define('APP_VERSION', '1.0.0');
 
 // Paths
@@ -43,13 +43,6 @@ define('PASSWORD_MIN_LENGTH', 8);
 define('CONTACT_EMAIL', 'info@vyaparmandal.com');
 define('CONTACT_PHONE', '+91 98765 43210');
 define('CONTACT_ADDRESS', '123 Business Plaza, Gandhi Nagar, Lucknow, Uttar Pradesh - 226001');
-
-// Social Media Links (Dummy Data)
-define('SOCIAL_FACEBOOK', 'https://facebook.com/vyaparmandal');
-define('SOCIAL_TWITTER', 'https://twitter.com/vyaparmandal');
-define('SOCIAL_INSTAGRAM', 'https://instagram.com/vyaparmandal');
-define('SOCIAL_LINKEDIN', 'https://linkedin.com/company/vyaparmandal');
-define('SOCIAL_YOUTUBE', 'https://youtube.com/@vyaparmandal');
 
 // Error Reporting
 if (APP_DEBUG) {

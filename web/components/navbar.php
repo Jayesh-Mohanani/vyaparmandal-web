@@ -13,13 +13,6 @@ $isAdminRoute = strpos($currentPath, '/admin') === 0;
                     <a href="mailto:<?php echo CONTACT_EMAIL; ?>"><?php echo CONTACT_EMAIL; ?></a>
                 </div>
 
-                <div class="site-top-strip__social d-flex align-items-center">
-                    <a href="<?php echo SOCIAL_FACEBOOK; ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="<?php echo SOCIAL_TWITTER; ?>" target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="<?php echo SOCIAL_YOUTUBE; ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                    <a href="<?php echo SOCIAL_LINKEDIN; ?>" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="<?php echo SOCIAL_INSTAGRAM; ?>" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                </div>
             </div>
         </div>
     </div>
@@ -78,7 +71,7 @@ $isAdminRoute = strpos($currentPath, '/admin') === 0;
                     <li class="nav-item">
                         <a class="nav-link <?php echo isActive('/gallery'); ?>" href="<?php echo url('/gallery'); ?>" <?php echo isActive('/gallery') ? 'aria-current="page"' : ''; ?>>Media Resources</a>
                     </li>
-                    <li class="nav-item dropdown site-nav-dropdown">
+                    <li class="nav-item dropdown site-nav-dropdown d-none">
                         <a class="nav-link dropdown-toggle <?php echo isActive('/membership'); ?>" href="#" id="membersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo isActive('/membership') ? 'aria-current="page"' : ''; ?>>
                             Members Area
                         </a>
@@ -118,9 +111,11 @@ $isAdminRoute = strpos($currentPath, '/admin') === 0;
                             </ul>
                         </div>
                     <?php else: ?>
-                        <?php $returnTo = getReturnToPath('/'); ?>
-                        <a class="site-nav-button site-nav-button--primary" href="<?php echo url('/login?return_to=' . urlencode($returnTo)); ?>">Login</a>
-                        <a class="site-nav-button site-nav-button--ghost" href="<?php echo url('/register?return_to=' . urlencode($returnTo)); ?>">Register</a>
+                        <button type="button"
+                                class="site-nav-button site-nav-button--primary js-coming-soon"
+                                data-coming-soon-message="The app will be available here soon.">
+                            Login
+                        </button>
                     <?php endif; ?>
                 </div>
             </div>

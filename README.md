@@ -33,9 +33,8 @@ A complete, scalable, production-ready PHP web application built with **Core PHP
 
 1. Place project in web server directory (e.g., `/htdocs/vyaparmandal-web/`)
 2. Ensure Apache mod_rewrite is enabled
-3. Set upload folder permissions: `chmod -R 755 landing-page/uploads/ web/uploads/`
-4. Access version selector: `http://localhost/vyaparmandal-web/`
-5. Access website: `http://localhost/vyaparmandal-web/landing-page/`
+3. Set upload folder permissions: `chmod -R 755 web/uploads/`
+4. Access website (root): `http://localhost/vyaparmandal-web/`
 
 ## 🔐 Demo Credentials
 
@@ -56,32 +55,25 @@ A complete, scalable, production-ready PHP web application built with **Core PHP
 ├── .gitignore                    # Git ignore rules
 ├── .git/                         # Git repository
 │
-├── /landing-page                 # Main production website
+├── /web                         # Single application folder (production)
 │   ├── index.php                # Front controller
-│   ├── .htaccess                # URL rewriting
+│   ├── .htaccess                # URL rewriting (configured for root)
 │   ├── /routes                  # Web & admin routes
-│   ├── /controllers             # MVC controllers
-│   ├── /views                   # Page templates
-│   ├── /components              # Reusable components
-│   ├── /middleware              # Auth & admin middleware
-│   ├── /config                  # App & DB config
-│   ├── /helpers                 # Utility functions
-│   ├── /models                  # Data layer
-│   ├── /uploads                 # File uploads (events, gallery, images)
-│   └── /assets                  # CSS, JS, images
-│
-├── /web                         # Web version (mirror of landing-page)
-│   ├── index.php
-│   ├── .htaccess
-│   ├── /routes, /controllers, /views, etc. (same structure)
-│   └── ... (same as landing-page)
+    ├── /controllers             # MVC controllers
+    ├── /views                   # Page templates
+    ├── /components              # Reusable components
+    ├── /middleware              # Auth & admin middleware
+    ├── /config                  # App & DB config
+    ├── /helpers                 # Utility functions
+    ├── /models                  # Data layer
+    ├── /uploads                 # File uploads (events, gallery, images)
+    └── /assets                  # CSS, JS, images
 │
 └── (Future branches: staging/, features-testing/, prod/)
 ```
 
-### Available Versions:
-- **Landing Page** (`/landing-page/`) - Main production-ready website
-- **Web** (`/web/`) - Mirror version for A/B testing
+### Available Version:
+- **Web** (deployed at project root) - Main application folder
 - **Staging** (branch: `staging`) - Pre-production environment
 - **Features Testing** (branch: `features-testing`) - Development environment
 - **Production** (branch: `prod`) - Live production version
@@ -90,7 +82,7 @@ A complete, scalable, production-ready PHP web application built with **Core PHP
 
 Currently uses PHP arrays. To connect MySQL:
 
-1. Edit `/landing-page/config/db.php` with your credentials
+1. Edit `/web/config/db.php` with your credentials
 2. Execute SQL schema (provided in db.php comments)
 3. Replace array functions with database queries
 
@@ -101,13 +93,13 @@ Helper functions are ready:
 
 ## ⚙️ Configuration
 
-Edit `/landing-page/config/app.php` or `/web/config/app.php`:
+Edit `/web/config/app.php`:
 
 ```php
 define('APP_ENV', 'production');  // development or production
 define('APP_DEBUG', false);        // Disable in production
 define('APP_URL', 'https://yourdomain.com');
-define('BASE_URL', '/vyaparmandal-web/landing-page'); // Adjust based on installation
+define('BASE_URL', '/vyaparmandal-web/'); // Adjust based on installation
 define('CONTACT_EMAIL', 'your@email.com');
 ```
 

@@ -164,6 +164,62 @@
     });
 
     // ====================
+    // Coming Soon Popup
+    // ====================
+    const showComingSoonToast = (message) => {
+        if (!window.bootstrap || !bootstrap.Toast) {
+            window.alert(message);
+            return;
+        }
+
+        let toastHost = document.getElementById('comingSoonToastHost');
+        if (!toastHost) {
+            toastHost = document.createElement('div');
+            toastHost.id = 'comingSoonToastHost';
+            toastHost.className = 'position-fixed bottom-0 end-0 p-3';
+            toastHost.style.zIndex = '1080';
+            document.body.appendChild(toastHost);
+        }
+
+        let toast = toastHost.querySelector('.toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast border-0 shadow-lg text-white';
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            toast.style.background = 'linear-gradient(135deg, #0f172a 0%, #667eea 50%, #f97316 100%)';
+            toast.innerHTML = `
+                <div class="d-flex align-items-start">
+                    <div class="toast-body fw-semibold"></div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            toastHost.appendChild(toast);
+        }
+
+        const toastBody = toast.querySelector('.toast-body');
+        toastBody.textContent = message;
+
+        const toastInstance = bootstrap.Toast.getOrCreateInstance(toast, {
+            delay: 5000,
+            autohide: true,
+        });
+
+        toastInstance.show();
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.js-coming-soon');
+        if (!trigger) {
+            return;
+        }
+
+        event.preventDefault();
+        showComingSoonToast(trigger.getAttribute('data-coming-soon-message') || 'The app will be available here soon.');
+    });
+
+    // ====================
     // Character Counter for Textareas
     // ====================
     const textareas = document.querySelectorAll('textarea[maxlength]');
