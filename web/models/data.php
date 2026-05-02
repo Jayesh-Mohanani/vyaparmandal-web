@@ -9,126 +9,242 @@ if (!defined('APP_NAME')) {
     die('Direct access not permitted');
 }
 
+require_once __DIR__ . '/../config/db.php';
+
 /**
  * Get all users (simulated)
  */
 function getAllUsers() {
-    return [
-        [
-            'id' => 1,
-            'name' => 'Admin User',
-            'email' => 'admin@vyaparmandal.com',
-            'password' => password_hash('admin123', PASSWORD_DEFAULT),
-            'role' => 'admin',
-            'phone' => '9792043767',
-            'created_at' => '2024-01-15 10:30:00'
-        ],
-        [
-            'id' => 2,
-            'name' => 'Rajesh Kumar',
-            'email' => 'rajesh@example.com',
-            'password' => password_hash('password123', PASSWORD_DEFAULT),
-            'role' => 'user',
-            'phone' => '9876543210',
-            'created_at' => '2024-02-20 14:20:00'
-        ],
-        [
-            'id' => 3,
-            'name' => 'Priya Sharma',
-            'email' => 'priya@example.com',
-            'password' => password_hash('password123', PASSWORD_DEFAULT),
-            'role' => 'user',
-            'phone' => '9765432109',
-            'created_at' => '2024-03-10 09:15:00'
-        ]
-    ];
+    $sql = "SELECT id, fullName AS name, email, password, role, mobileNumber AS phone, createdAt AS created_at
+            FROM users
+            WHERE status = :status";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['status' => 1]);
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        error_log('getAllUsers error: ' . $e->getMessage());
+        return [];
+    }
 }
 
 /**
  * Get user by email
  */
 function getUserByEmail($email) {
-    $users = getAllUsers();
-    foreach ($users as $user) {
-        if ($user['email'] === $email) {
-            return $user;
-        }
+    $email = trim((string)$email);
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return null;
     }
-    return null;
+
+    $sql = "SELECT id, fullName AS name, email, password, role, mobileNumber AS phone, createdAt AS created_at
+            FROM users
+            WHERE email = :email AND status = :status
+            LIMIT 1";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'email' => $email,
+            'status' => 1
+        ]);
+        $user = $stmt->fetch();
+        return $user ?: null;
+    } catch (PDOException $e) {
+        error_log('getUserByEmail error: ' . $e->getMessage());
+        return null;
+    }
 }
 
 /**
  * Get user by ID
  */
 function getUserById($id) {
-    $users = getAllUsers();
-    foreach ($users as $user) {
-        if ($user['id'] == $id) {
-            return $user;
-        }
+    $id = filter_var($id, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    if ($id === false) {
+        return null;
     }
-    return null;
+
+    $sql = "SELECT id, fullName AS name, email, password, role, mobileNumber AS phone, createdAt AS created_at
+            FROM users
+            WHERE id = :id AND status = :status
+            LIMIT 1";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id,
+            'status' => 1
+        ]);
+        $user = $stmt->fetch();
+        return $user ?: null;
+    } catch (PDOException $e) {
+        error_log('getUserById error: ' . $e->getMessage());
+        return null;
+    }
 }
 
 /**
  * Get all events (simulated)
  */
 function getAllEvents() {
-    return [
-        [
-            'id' => 1,
-            'title' => 'व्यापारी महाकुंभ 2026',
-            'description' => 'A grand gathering of traders and business owners from across Uttar Pradesh to discuss trade policies, GST reforms, and business opportunities.',
-            'event_date' => '2026-05-15',
-            'location' => 'Lucknow, Uttar Pradesh',
-            'image' => 'event1.jpg',
-            'status' => 'upcoming',
-            'created_at' => '2024-03-01 10:00:00'
-        ],
-        [
-            'id' => 2,
-            'title' => 'GST Awareness Workshop',
-            'description' => 'Interactive workshop on GST compliance, filing returns, and understanding recent policy changes affecting small businesses.',
-            'event_date' => '2026-04-20',
-            'location' => 'Kanpur, Uttar Pradesh',
-            'image' => 'event2.jpg',
-            'status' => 'upcoming',
-            'created_at' => '2024-03-10 11:30:00'
-        ],
-        [
-            'id' => 3,
-            'title' => 'Digital Business Summit',
-            'description' => 'Learn about digital transformation, e-commerce strategies, and online marketing for traditional businesses.',
-            'event_date' => '2026-06-10',
-            'location' => 'Varanasi, Uttar Pradesh',
-            'image' => 'event3.jpg',
-            'status' => 'upcoming',
-            'created_at' => '2024-03-15 14:00:00'
-        ],
-        [
-            'id' => 4,
-            'title' => 'Annual Traders Conference',
-            'description' => 'Annual conference featuring industry leaders, policy makers, and successful entrepreneurs sharing insights and experiences.',
-            'event_date' => '2024-12-20',
-            'location' => 'Agra, Uttar Pradesh',
-            'image' => 'event4.jpg',
-            'status' => 'completed',
-            'created_at' => '2024-01-05 09:00:00'
-        ]
-    ];
+    $sql = "SELECT
+                id,
+                name AS title,
+                description,
+                date AS event_date,
+                location,
+                imagePath AS image,
+                CASE
+                    WHEN TIMESTAMP(date, time) >= NOW() THEN 'upcoming'
+                    ELSE 'completed'
+                END AS status,
+                CONCAT(date, ' ', time) AS created_at
+            FROM events
+            ORDER BY date DESC, time DESC";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        error_log('getAllEvents error: ' . $e->getMessage());
+        return [];
+    }
 }
 
 /**
  * Get event by ID
  */
 function getEventById($id) {
-    $events = getAllEvents();
-    foreach ($events as $event) {
-        if ($event['id'] == $id) {
-            return $event;
-        }
+    $id = filter_var($id, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    if ($id === false) {
+        return null;
     }
-    return null;
+
+    $sql = "SELECT
+                id,
+                name AS title,
+                description,
+                date AS event_date,
+                location,
+                imagePath AS image,
+                CASE
+                    WHEN TIMESTAMP(date, time) >= NOW() THEN 'upcoming'
+                    ELSE 'completed'
+                END AS status,
+                CONCAT(date, ' ', time) AS created_at
+            FROM events
+            WHERE id = :id
+            LIMIT 1";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $event = $stmt->fetch();
+        return $event ?: null;
+    } catch (PDOException $e) {
+        error_log('getEventById error: ' . $e->getMessage());
+        return null;
+    }
+}
+
+/**
+ * Create a password reset token
+ */
+function createPasswordResetToken($userId, $token, $expiry) {
+    $userId = filter_var($userId, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    $token = trim((string)$token);
+    $expiry = trim((string)$expiry);
+
+    if ($userId === false || $token === '' || $expiry === '') {
+        return false;
+    }
+
+    $sql = "INSERT INTO password_resets (user_id, token, expires_at, created_at)
+            VALUES (:user_id, :token, :expires_at, NOW())";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            'user_id' => $userId,
+            'token' => $token,
+            'expires_at' => $expiry
+        ]);
+    } catch (PDOException $e) {
+        error_log('createPasswordResetToken error: ' . $e->getMessage());
+        return false;
+    }
+}
+
+/**
+ * Get user by password reset token
+ */
+function getUserByResetToken($token) {
+    $token = trim((string)$token);
+    if ($token === '') {
+        return null;
+    }
+
+    $sql = "SELECT u.id, u.fullName AS name, u.email, u.password, u.role,
+                   u.mobileNumber AS phone, u.createdAt AS created_at
+            FROM password_resets pr
+            INNER JOIN users u ON u.id = pr.user_id
+            WHERE pr.token = :token
+              AND pr.expires_at >= NOW()
+              AND u.status = :status
+            ORDER BY pr.created_at DESC
+            LIMIT 1";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'token' => $token,
+            'status' => 1
+        ]);
+        $user = $stmt->fetch();
+        return $user ?: null;
+    } catch (PDOException $e) {
+        error_log('getUserByResetToken error: ' . $e->getMessage());
+        return null;
+    }
+}
+
+/**
+ * Log an admin action
+ */
+function logAdminAction($adminId, $action, $ip) {
+    $adminId = filter_var($adminId, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    $action = trim((string)$action);
+    $ip = trim((string)$ip);
+
+    if ($adminId === false || $action === '' || $ip === '') {
+        return false;
+    }
+
+    $sql = "INSERT INTO admin_logs (admin_id, action, ip_address, created_at)
+            VALUES (:admin_id, :action, :ip_address, NOW())";
+
+    try {
+        $pdo = getDBConnection();
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            'admin_id' => $adminId,
+            'action' => $action,
+            'ip_address' => $ip
+        ]);
+    } catch (PDOException $e) {
+        error_log('logAdminAction error: ' . $e->getMessage());
+        return false;
+    }
 }
 
 /**

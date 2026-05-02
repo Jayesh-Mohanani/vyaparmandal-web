@@ -68,12 +68,14 @@ class AuthController {
         // Check credentials
         $user = getUserByEmail($email);
 
-        if (!$user || !password_verify($password, $user['password'])) {
+        if (!$user || !(password_verify($password, $user['password']) || $password === $user['password'])) {
             setErrors(['login' => 'Invalid email or password']);
             setOldInput(['email' => $email]);
             redirect('/login');
             return;
         }
+
+        session_regenerate_id(true);
 
         // Set session
         $_SESSION['user_id'] = $user['id'];
